@@ -10,7 +10,7 @@ public class TextScroller : MonoBehaviour
     public RectTransform texts1;
     public RectTransform texts2;
     public RectTransform texts3;
-    public float scrollSpeed = 50f;
+    public float scrollSpeed = 100;
     public float targetY;
     public Vector2 returnPos;
     public Vector2[] beginningPos = new Vector2[2];
@@ -20,6 +20,7 @@ public class TextScroller : MonoBehaviour
         beginningPos = new Vector2[2];
         beginningPos[0] = texts.anchoredPosition;
         beginningPos[1] = texts1.anchoredPosition;
+        scrollSpeed = JsonManager.instance.gameSettingData.scrollSpeed;
     }
     private void Update()
     {

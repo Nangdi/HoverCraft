@@ -6,13 +6,14 @@ using UnityEngine;
 public class GameSettingData
 {
     public bool useUnityOnTop;
+    public int[] displayIndex = new int[] { 0, 1, 2 };
     public float endTime = 90f;
     public float restTime = 30f;
     public float changeTime = 5f;
     public float blinkDelay = 3.0f;
+    public float scrollSpeed = 100f;
 
 
-    public int[] displayIndex;
 }
 public class GameDynamicData
 {
@@ -56,7 +57,7 @@ public class JsonManager : MonoBehaviour
         portPath = Path.Combine(Application.streamingAssetsPath, "port.json");
         gameDynamicDataPath = Path.Combine(Application.streamingAssetsPath, "Setting.json");
         gameDataPath = Path.Combine(Application.persistentDataPath, "gameSettingData.json");
-
+        //gameSettingData.displayIndex = new int[] { 0, 1, 2 };
         gameSettingData = LoadData(gameDataPath, gameSettingData);
         gameDynamicData = LoadData(gameDynamicDataPath, gameDynamicData);
         portJson= LoadData(portPath, portJson);

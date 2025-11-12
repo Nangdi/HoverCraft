@@ -22,10 +22,28 @@ public class UnityAlwaysOnTop : MonoBehaviour
 
     void Start()
     {
-        // 에디터에선 무시
-        if (Application.isEditor || !JsonManager.instance.gameSettingData.useUnityOnTop)
+
+
+        if (Application.isEditor)
         {
             Debug.Log("에디터에서는 AlwaysOnTop 설정 생략");
+            return;
+        }
+        // 에디터에선 무시
+        cam1.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[0];
+        if (Display.displays.Length > 1)
+        {
+            Display.displays[1].Activate();
+            cam2.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[1];
+        }
+        if (Display.displays.Length > 2)
+        {
+            Display.displays[2].Activate();
+            cam3.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[2];
+        }
+
+        if (!JsonManager.instance.gameSettingData.useUnityOnTop)
+        {
             return;
         }
 
@@ -46,16 +64,6 @@ public class UnityAlwaysOnTop : MonoBehaviour
 
 
         //화면
-        cam1.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[0];
-        if (Display.displays.Length > 1)
-        {
-            Display.displays[1].Activate();
-            cam2.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[1];
-        }
-        if (Display.displays.Length > 2)
-        {
-            Display.displays[2].Activate();
-            cam3.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[2];
-        }
+
     }
 }

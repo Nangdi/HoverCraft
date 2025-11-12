@@ -18,12 +18,29 @@ public class CustomSPManager : SerialPortManager
         switch (data)
         {
             case "DW":
-                gameController.SetMode(Mode.Wait);
+                if (gameController.mode == Mode.Ready)
+                {
+                    gameController.SetMode(Mode.Wait);
+                }
                 break;
             case "DP":
-                gameController.SetMode(Mode.play);
+                if (gameController.mode == Mode.Wait)
+                {
+                    gameController.SetMode(Mode.play);
+                }
                 break;
         }
 
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            ReceivedData("DW");
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            ReceivedData("DP");
+        }
     }
 }
