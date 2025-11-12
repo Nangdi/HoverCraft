@@ -21,7 +21,9 @@ public class GameController : MonoBehaviour
     public float lapseTimer;
     public float changeTimer;
     public TMP_Text backText;
+    public TMP_Text backText1;
     public TMP_Text frontText;
+    public TMP_Text frontText1;
     public Image[] colorImage;
     public Image[] cashingColor;
     public int index =0;
@@ -30,6 +32,7 @@ public class GameController : MonoBehaviour
     float endTime = 90f;
     float restTime = 30f;
     float changeTime = 5f;
+    int returnNum = 7;
     public void SetMode(Mode _mode)
     {
         mode = _mode;
@@ -79,7 +82,7 @@ public class GameController : MonoBehaviour
             UpdateText();
         }
 
-
+        
 
         if (mode == Mode.Wait || mode == Mode.Ready)
         {
@@ -91,8 +94,10 @@ public class GameController : MonoBehaviour
         {
             if (lapseTimer >= 10)
             {
-                data.playText_F[0] = $"체험중입니다  {endTime - (int)lapseTimer}초";
-                UpdateText();
+                //data.playText_F[0] = $"체험중입니다<color=#FFFE00>{endTime - (int)lapseTimer}</color>초";
+                frontText.text = ConvertPlayText(data.playText_F);
+                frontText1.text = ConvertPlayText(data.playText_F);
+                //UpdateText();
             }
             if (lapseTimer >= endTime)
             {
@@ -124,31 +129,93 @@ public class GameController : MonoBehaviour
         {
             case Mode.Ready:
                 backText.text = ConvertToVerticalText(data.readyText_B);
+                backText1.text = ConvertToVerticalText(data.readyText_B);
                 frontText.text = ConvertToVerticalText(data.readyText_F);
+                frontText1.text = ConvertToVerticalText(data.readyText_F);
                 break;
             case Mode.Wait:
                 backText.text = ConvertToVerticalText(data.waitText_B);
+                backText1.text = ConvertToVerticalText(data.waitText_B);
                 frontText.text = ConvertToVerticalText(data.waitText_F);
+                frontText1.text = ConvertToVerticalText(data.waitText_F);
                 break;
             case Mode.play:
                 backText.text = ConvertToVerticalText(data.playText_B);
+                backText1.text = ConvertToVerticalText(data.playText_B);
                 frontText.text = ConvertToVerticalText(data.playText_F);
+                frontText1.text = ConvertToVerticalText(data.playText_F);
                 break;
             case Mode.End:
                 backText.text = ConvertToVerticalText(data.endText_B);
+                backText1.text = ConvertToVerticalText(data.endText_B);
                 frontText.text = ConvertToVerticalText(data.endText_F);
+                frontText1.text = ConvertToVerticalText(data.endText_F);
                 break;
         }
     }
     private string ConvertToVerticalText(string[] texts)
     {
-        int tempIndex = index % texts.Length;
-        string currentString = texts[tempIndex];
+        //int tempIndex = index % texts.Length;
+        //string currentString = texts[tempIndex];
         string tempSting = "";
+        if (texts.Length > 1)
+        {
+            for (int i = 0; i < texts.Length; i++)
+            {
+
+                string currentString = texts[i];
+                if (i != 0)
+                {
+                    for (int k = 0; k < returnNum; k++)
+                    {
+                        tempSting += "\n";
+                    }
+                }
+                foreach (var item in currentString)
+                {
+                    tempSting += item + "\n";
+                }
+
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 2; i++)
+            {
+
+                string currentString = texts[0];
+                if (i != 0)
+                {
+                    for (int k = 0; k < returnNum; k++)
+                    {
+                        tempSting += "\n";
+                    }
+                }
+                foreach (var item in currentString)
+                {
+                    tempSting += item + "\n";
+                }
+
+
+            }
+        }
+
+
+        return tempSting;
+    }
+    private string ConvertPlayText(string[] texts )
+    {
+        string tempSting = "";
+
+
+        string currentString = texts[0];
+
         foreach (var item in currentString)
         {
-            tempSting += item+"\n";
+            tempSting += item + "\n";
         }
+        tempSting += $"\n<color=#FFFE00>{endTime - (int)lapseTimer}</color>\n초";
         return tempSting;
     }
     private void SetColor()

@@ -16,6 +16,10 @@ public class UnityAlwaysOnTop : MonoBehaviour
     private const UInt32 SWP_NOMOVE = 0x0002;
     private const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
 
+    [SerializeField] private Camera cam1;
+    [SerializeField] private Camera cam2;
+    [SerializeField] private Camera cam3;
+
     void Start()
     {
         // 에디터에선 무시
@@ -37,6 +41,21 @@ public class UnityAlwaysOnTop : MonoBehaviour
         else
         {
             Debug.LogError(" Unity 창 핸들을 찾지 못했습니다.");
+        }
+
+
+
+        //화면
+        cam1.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[0];
+        if (Display.displays.Length > 1)
+        {
+            Display.displays[1].Activate();
+            cam2.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[1];
+        }
+        if (Display.displays.Length > 2)
+        {
+            Display.displays[2].Activate();
+            cam3.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[2];
         }
     }
 }

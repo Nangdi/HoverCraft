@@ -8,6 +8,8 @@ public class TextTweener : MonoBehaviour
 {
     public TMP_Text targetText1;     // 깜빡일 텍스트
     public TMP_Text targetText2;     // 깜빡일 텍스트
+    public TMP_Text targetText3;     // 깜빡일 텍스트
+    public TMP_Text targetText4;     // 깜빡일 텍스트
     public float fadeTime = 0.5f;   // 페이드 속도
     public float delay = 3.0f;      // 대기 시간 (선택사항)
     private Tween blinkTween;
@@ -19,6 +21,8 @@ public class TextTweener : MonoBehaviour
 
         StartTweening(targetText1);
         StartTweening(targetText2);
+        StartTweening(targetText3);
+        StartTweening(targetText4);
     }
     private void StartTweening(TMP_Text targetText)
     {

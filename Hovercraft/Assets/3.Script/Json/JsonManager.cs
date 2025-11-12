@@ -10,6 +10,9 @@ public class GameSettingData
     public float restTime = 30f;
     public float changeTime = 5f;
     public float blinkDelay = 3.0f;
+
+
+    public int[] displayIndex;
 }
 public class GameDynamicData
 {
