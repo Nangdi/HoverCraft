@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+[Serializable]
+public class TextOB
+{
+    public float returnPos ;
+    public TMP_Text text;
+    public RectTransform textRect;
+    public int lenght;
+    public bool isPlay = true;
+}
+
 
 public class TextScroller : MonoBehaviour
 {
     public GameController controller;
-
-    public RectTransform texts;
-    public RectTransform texts1;
-    public RectTransform texts2;
-    public RectTransform texts3;
+    [SerializeField]
+    private TextOB[] textOBs = new TextOB[4];
     public float scrollSpeed = 100;
     public float targetY;
     public Vector2 returnPos;
@@ -18,32 +28,62 @@ public class TextScroller : MonoBehaviour
     private void Start()
     {
         beginningPos = new Vector2[2];
-        beginningPos[0] = texts.anchoredPosition;
-        beginningPos[1] = texts1.anchoredPosition;
+        beginningPos[0] = textOBs[0].textRect.anchoredPosition;
+        beginningPos[1] = textOBs[1].textRect.anchoredPosition;
         scrollSpeed = JsonManager.instance.gameSettingData.scrollSpeed;
+        returnPos = JsonManager.instance.gameDynamicData.returnPos;
+        //targetY = GetSpacing(JsonManager.instance.gameDynamicData.fontSize , )
+        initTextClass();
+        UpdateTextInfo();
     }
     private void Update()
     {
         if (controller.mode != Mode.play)
         {
-            scrollText(texts);
-            scrollText(texts1);
-            
+            scrollText(textOBs[0], textOBs[1]);
+            scrollText(textOBs[1], textOBs[0]);
+
         }
         else
         {
-            texts.anchoredPosition = beginningPos[0];
-            texts1.anchoredPosition = beginningPos[1];
+            textOBs[0].textRect.anchoredPosition = beginningPos[0];
+            textOBs[1].textRect.anchoredPosition = beginningPos[1];
         }
-        scrollText(texts2);
-        scrollText(texts3);
+        scrollText(textOBs[2],textOBs[3]);
+        scrollText(textOBs[3],textOBs[2]);
     }
-    private void scrollText(RectTransform texts)
+    private void scrollText(TextOB textob, TextOB nextOB)
     {
-        texts.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
-        if (texts.anchoredPosition.y >= targetY)
+        textob.textRect.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
+        if (textob.textRect.anchoredPosition.y >= textob.returnPos && textob.isPlay)
         {
-            texts.anchoredPosition = returnPos;
+            Debug.Log("다음텍스트 위치로");
+            nextOB.textRect.anchoredPosition = returnPos;
+            textob.isPlay = false;
+            nextOB.isPlay = true;
+        }
+    }
+    private float GetSpacing(int textLenght)
+    {
+        float fixValue = 1.123f;
+        float result = fixValue * JsonManager.instance.gameDynamicData.fontSize * textLenght;
+        
+        return result- JsonManager.instance.gameDynamicData.textDistance;
+    }
+    public void UpdateTextInfo()
+    {
+        for (int i = 0; i < textOBs.Length; i++)
+        {
+            textOBs[i].lenght = textOBs[i].text.text.Length/2;
+            textOBs[i].returnPos = GetSpacing(textOBs[i].lenght);
+        }
+       
+    }
+    private void initTextClass()
+    {
+        for (int i = 0; i < textOBs.Length; i++)
+        {
+            textOBs[i].text.fontSize = JsonManager.instance.gameDynamicData.fontSize;
         }
     }
 }

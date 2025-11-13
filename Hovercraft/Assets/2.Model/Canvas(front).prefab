@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC9C0\n\uAE08\n\uC740\n\n\uCCB4\n\uD5D8\n\uC774\n\uAC00\n\uB2A5\n\uD569\n\uB2C8\n\uB2E4\n\n\n\n\n\n\n\n\uC9C0\n\uAE08\n\uC740\n\n\uCCB4\n\uD5D8\n\uC774\n\uAC00\n\uB2A5\n\uD569\n\uB2C8\n\uB2E4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e8c12bc24d8b644d87b2c68161e27bc, type: 2}
-  m_sharedMaterial: {fileID: 2725831686693014789, guid: 5e8c12bc24d8b644d87b2c68161e27bc,
+  m_fontAsset: {fileID: 11400000, guid: 23f46811fb4c3c94686d7f87acc760f1, type: 2}
+  m_sharedMaterial: {fileID: 701887188280109631, guid: 23f46811fb4c3c94686d7f87acc760f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 111
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 12
+  m_lineSpacing: -7
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -482,8 +482,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC9C0\n\uAE08\n\uC740\n\n\uCCB4\n\uD5D8\n\uC774\n\uAC00\n\uB2A5\n\uD569\n\uB2C8\n\uB2E4\n\n\n\n\n\n\n\n\uC9C0\n\uAE08\n\uC740\n\n\uCCB4\n\uD5D8\n\uC774\n\uAC00\n\uB2A5\n\uD569\n\uB2C8\n\uB2E4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e8c12bc24d8b644d87b2c68161e27bc, type: 2}
-  m_sharedMaterial: {fileID: 2725831686693014789, guid: 5e8c12bc24d8b644d87b2c68161e27bc,
+  m_fontAsset: {fileID: 11400000, guid: 23f46811fb4c3c94686d7f87acc760f1, type: 2}
+  m_sharedMaterial: {fileID: 701887188280109631, guid: 23f46811fb4c3c94686d7f87acc760f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -508,8 +508,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 111
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 12
+  m_lineSpacing: -7
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

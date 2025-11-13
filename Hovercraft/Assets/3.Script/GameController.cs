@@ -14,6 +14,8 @@ public enum Mode
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private TextScroller scroller;
+
     public Mode mode = Mode.Ready;
     GameDynamicData data;
     GameSettingData settingData;
@@ -151,53 +153,17 @@ public class GameController : MonoBehaviour
                 frontText1.text = ConvertToVerticalText(data.endText_F);
                 break;
         }
+        scroller.UpdateTextInfo();
     }
     private string ConvertToVerticalText(string[] texts)
     {
         //int tempIndex = index % texts.Length;
         //string currentString = texts[tempIndex];
         string tempSting = "";
-        if (texts.Length > 1)
+        string currentString = texts[0];
+        foreach (var item in currentString)
         {
-            for (int i = 0; i < texts.Length; i++)
-            {
-
-                string currentString = texts[i];
-                if (i != 0)
-                {
-                    for (int k = 0; k < returnNum; k++)
-                    {
-                        tempSting += "\n";
-                    }
-                }
-                foreach (var item in currentString)
-                {
-                    tempSting += item + "\n";
-                }
-
-
-            }
-        }
-        else
-        {
-            for (int i = 0; i < 2; i++)
-            {
-
-                string currentString = texts[0];
-                if (i != 0)
-                {
-                    for (int k = 0; k < returnNum; k++)
-                    {
-                        tempSting += "\n";
-                    }
-                }
-                foreach (var item in currentString)
-                {
-                    tempSting += item + "\n";
-                }
-
-
-            }
+            tempSting += item + "\n";
         }
 
 
@@ -214,7 +180,7 @@ public class GameController : MonoBehaviour
         {
             tempSting += item + "\n";
         }
-        tempSting += $"\n<color=#FFFE00>{endTime - (int)lapseTimer}</color>\n√ ";
+        tempSting += $"<color=#FFFE00>{endTime - (int)lapseTimer}</color>\n√ ";
         return tempSting;
     }
     private void SetColor()
