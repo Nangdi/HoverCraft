@@ -29,6 +29,12 @@ public class CustomSPManager : SerialPortManager
                     gameController.SetMode(Mode.play);
                 }
                 break;
+            case "DE":
+                if (gameController.mode == Mode.Wait)
+                {
+                    gameController.SetMode(Mode.End);
+                }
+                break;
         }
 
     }
@@ -41,6 +47,10 @@ public class CustomSPManager : SerialPortManager
         if (Input.GetKeyDown(KeyCode.S))
         {
             ReceivedData("DP");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ReceivedData("DE");
         }
     }
 }

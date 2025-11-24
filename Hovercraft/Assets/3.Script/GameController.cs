@@ -151,6 +151,7 @@ public class GameController : MonoBehaviour
                 backText1.text = ConvertToVerticalText(data.endText_B);
                 frontText.text = ConvertToVerticalText(data.endText_F);
                 frontText1.text = ConvertToVerticalText(data.endText_F);
+                lapseTimer = 0;
                 break;
         }
         scroller.UpdateTextInfo();

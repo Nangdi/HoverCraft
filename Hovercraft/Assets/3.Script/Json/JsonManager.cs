@@ -26,7 +26,7 @@ public class GameDynamicData
     public string[] endText_F;  /*"체험이 종료되었습니다";*/
     public string[] endText_B;  /*"다음체험자를위해 퇴장";*/
     public float textDistance = 300f;
-    public Vector2 returnPos= new Vector2(0, -573f);
+    public Vector2 returnPos= new Vector2(0, -670f);
     public float fontSize = 60f;
 }
 public class PortJson

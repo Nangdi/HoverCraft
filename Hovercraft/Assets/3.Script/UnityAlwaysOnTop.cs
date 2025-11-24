@@ -35,6 +35,7 @@ public class UnityAlwaysOnTop : MonoBehaviour
         {
             Display.displays[1].Activate();
             cam2.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[1];
+            //Screen.SetResolution(84, 840, true);
         }
         if (Display.displays.Length > 2)
         {
