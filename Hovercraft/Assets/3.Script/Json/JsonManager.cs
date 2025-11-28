@@ -64,6 +64,9 @@ public class JsonManager : MonoBehaviour
         gameSettingData = LoadData(gameDataPath, gameSettingData);
         gameDynamicData = LoadData(gameDynamicDataPath, gameDynamicData);
         portJson= LoadData(portPath, portJson);
+        Debug.Log(gameSettingData.displayIndex[0]);
+        Debug.Log(gameSettingData.displayIndex[1]);
+        Debug.Log(gameSettingData.displayIndex[2]);
     }
 
     //저장할 json 객체 , 경로설정
@@ -100,11 +103,11 @@ public class JsonManager : MonoBehaviour
         gameDynamicData = new GameDynamicData();
         gameDynamicData.readyText_F = new string[] { "지금은 체험이 가능합니다", };/*= "지금은 체험이가능합니다";*/
         gameDynamicData.readyText_B = new string[] { "안전벨트를 착용해주세요", };/*= "안전벨트를 착용해주세요";*/
-        gameDynamicData.waitText_F = new string[] { "다른 체험자가 준비중입니다", "잠시만 기다려주세요" };/* "다른체험자가 준비중입니다";*/
+        gameDynamicData.waitText_F = new string[] { "현재 체험 준비중입니다", "잠시만 기다려주세요" };/* "다른체험자가 준비중입니다";*/
         gameDynamicData.waitText_B = new string[] { "시작버튼을 눌러주세요", }; /* "시작버튼을 눌러주세요";*/
-        gameDynamicData.playText_F = new string[] { "체험중입니다" }; /* "체험중입니다  80초";*/
-        gameDynamicData.playText_B = new string[] { "버튼을 이용해 움직여보세요",  };/* "버튼을이용해 움직여보세요";*/
+        gameDynamicData.playText_F = new string[] { "  체험중입니다 " }; /* "체험중입니다  80초";*/
+        gameDynamicData.playText_B = new string[] { "버튼을 이용해 움직이세요",  };/* "버튼을이용해 움직여보세요";*/
         gameDynamicData.endText_F = new string[] { "체험이 종료 되었습니다", "잠시후 체험이 시작됩니다" };  /*"체험이 종료되었습니다";*/
-        gameDynamicData.endText_B = new string[] { "체험이 종료 되었습니다", "다음 체험자를 위해 퇴장해 주세요" };  /*"다음체험자를위해 퇴장";*/
+        gameDynamicData.endText_B = new string[] { "체험이 종료 되었습니다", "안전하게 퇴장해 주세요" };  /*"다음체험자를위해 퇴장";*/
     }
 }

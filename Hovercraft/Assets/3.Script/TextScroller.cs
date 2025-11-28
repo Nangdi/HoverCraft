@@ -49,8 +49,8 @@ public class TextScroller : MonoBehaviour
             textOBs[0].textRect.anchoredPosition = beginningPos[0];
             textOBs[1].textRect.anchoredPosition = beginningPos[1];
         }
-        scrollText(textOBs[2],textOBs[3]);
-        scrollText(textOBs[3],textOBs[2]);
+        //scrollText(textOBs[2],textOBs[3]);
+        //scrollText(textOBs[3],textOBs[2]);
     }
     private void scrollText(TextOB textob, TextOB nextOB)
     {

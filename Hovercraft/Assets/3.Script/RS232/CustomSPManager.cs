@@ -30,10 +30,10 @@ public class CustomSPManager : SerialPortManager
                 }
                 break;
             case "DE":
-                if (gameController.mode == Mode.Wait)
-                {
-                    gameController.SetMode(Mode.End);
-                }
+
+                gameController.SetMode(Mode.End);
+                gameController.lapseTimer = 0;
+                
                 break;
         }
 

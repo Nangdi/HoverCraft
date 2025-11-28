@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
         changeTimer = 0;
         UpdateText();
         SetColor();
+        initData();
     }
     //대기상태에서 RW받으면 Wait모드 , RP받으면 Play모드 , Play모드에선 90초 타이머 , 타이머종료후 End모드 30초대기시간 , 대기시간 후 Ready모드
 
@@ -75,13 +76,13 @@ public class GameController : MonoBehaviour
             SetMode(Mode.End);
         }
 
-        changeTimer += Time.deltaTime;
-        if(changeTimer >= changeTime)
-        {
-            changeTimer = 0;
-            index++;
-            UpdateText();
-        }
+        //changeTimer += Time.deltaTime;
+        //if(changeTimer >= changeTime)
+        //{
+        //    changeTimer = 0;
+        //    index++;
+        //    UpdateText();
+        //}
 
         
 
@@ -129,39 +130,39 @@ public class GameController : MonoBehaviour
         switch (mode)
         {
             case Mode.Ready:
-                backText.text = ConvertToVerticalText(data.readyText_B);
-                backText1.text = ConvertToVerticalText(data.readyText_B);
-                frontText.text = ConvertToVerticalText(data.readyText_F);
-                frontText1.text = ConvertToVerticalText(data.readyText_F);
+                backText.text = ConvertToVerticalText(data.readyText_B[0]);
+                backText1.text = ConvertToVerticalText(data.readyText_B[0]);
+                frontText.text = ConvertToVerticalText(data.readyText_F[0]);
+                frontText1.text = ConvertToVerticalText(data.readyText_F[0]);
                 break;
             case Mode.Wait:
-                backText.text = ConvertToVerticalText(data.waitText_B);
-                backText1.text = ConvertToVerticalText(data.waitText_B);
-                frontText.text = ConvertToVerticalText(data.waitText_F);
-                frontText1.text = ConvertToVerticalText(data.waitText_F);
+                backText.text = ConvertToVerticalText(data.waitText_B[0]);
+                backText1.text = ConvertToVerticalText(data.waitText_B[0]);
+                frontText.text = ConvertToVerticalText(data.waitText_F[0]);
+                frontText1.text = ConvertToVerticalText(data.waitText_F[1]);
                 break;
             case Mode.play:
-                backText.text = ConvertToVerticalText(data.playText_B);
-                backText1.text = ConvertToVerticalText(data.playText_B);
-                frontText.text = ConvertToVerticalText(data.playText_F);
-                frontText1.text = ConvertToVerticalText(data.playText_F);
+                backText.text = ConvertToVerticalText(data.playText_B[0]);
+                backText1.text = ConvertToVerticalText(data.playText_B[0]);
+                frontText.text = ConvertToVerticalText(data.playText_F[0]);
+                frontText1.text = ConvertToVerticalText(data.playText_F[0]);
                 break;
             case Mode.End:
-                backText.text = ConvertToVerticalText(data.endText_B);
-                backText1.text = ConvertToVerticalText(data.endText_B);
-                frontText.text = ConvertToVerticalText(data.endText_F);
-                frontText1.text = ConvertToVerticalText(data.endText_F);
-                lapseTimer = 0;
+                backText.text = ConvertToVerticalText(data.endText_B[0]);
+                backText1.text = ConvertToVerticalText(data.endText_B[1]);
+                frontText.text = ConvertToVerticalText(data.endText_F[0]);
+                frontText1.text = ConvertToVerticalText(data.endText_F[1]);
+                //lapseTimer = 0;
                 break;
         }
         scroller.UpdateTextInfo();
     }
-    private string ConvertToVerticalText(string[] texts)
+    private string ConvertToVerticalText(string texts)
     {
         //int tempIndex = index % texts.Length;
         //string currentString = texts[tempIndex];
         string tempSting = "";
-        string currentString = texts[0];
+        string currentString = texts;
         foreach (var item in currentString)
         {
             tempSting += item + "\n";

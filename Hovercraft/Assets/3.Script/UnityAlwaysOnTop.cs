@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
 
+public static class SystemPopup
+{
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+    public static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
+}
 public class UnityAlwaysOnTop : MonoBehaviour
 {
     [DllImport("user32.dll")]
@@ -16,9 +23,6 @@ public class UnityAlwaysOnTop : MonoBehaviour
     private const UInt32 SWP_NOMOVE = 0x0002;
     private const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
 
-    [SerializeField] private Camera cam1;
-    [SerializeField] private Camera cam2;
-    [SerializeField] private Camera cam3;
 
     void Start()
     {
@@ -30,25 +34,14 @@ public class UnityAlwaysOnTop : MonoBehaviour
             return;
         }
         // 에디터에선 무시
-        cam1.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[0];
-        if (Display.displays.Length > 1)
-        {
-            Display.displays[1].Activate();
-            cam2.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[1];
-            //Screen.SetResolution(84, 840, true);
-        }
-        if (Display.displays.Length > 2)
-        {
-            Display.displays[2].Activate();
-            cam3.targetDisplay = JsonManager.instance.gameSettingData.displayIndex[2];
-        }
+        
 
         if (!JsonManager.instance.gameSettingData.useUnityOnTop)
         {
             return;
         }
-
         Cursor.visible = false;
+
         // 빌드 실행 시 최상단 설정
         var windowName = Application.productName;
         IntPtr hWnd = FindWindow(null, windowName);
@@ -62,7 +55,7 @@ public class UnityAlwaysOnTop : MonoBehaviour
             Debug.LogError(" Unity 창 핸들을 찾지 못했습니다.");
         }
 
-
+    
 
         //화면
 
