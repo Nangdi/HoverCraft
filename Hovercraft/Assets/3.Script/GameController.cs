@@ -94,13 +94,15 @@ public class GameController : MonoBehaviour
         lapseTimer += Time.deltaTime;
         if (mode == Mode.play)
         {
-            if (lapseTimer >= 10)
-            {
+            //if (lapseTimer >= 10)
+            //{
                 //data.playText_F[0] = $"체험중입니다<color=#FFFE00>{endTime - (int)lapseTimer}</color>초";
                 frontText.text = ConvertPlayText(data.playText_F);
                 frontText1.text = ConvertPlayText(data.playText_F);
+                backText.text = ConvertPlayText(data.playText_B);
+                backText1.text = ConvertPlayText(data.playText_B);
                 //UpdateText();
-            }
+            //}
             if (lapseTimer >= endTime)
             {
                 Debug.Log($"체험시간종료");
@@ -165,9 +167,17 @@ public class GameController : MonoBehaviour
         string currentString = texts;
         foreach (var item in currentString)
         {
-            tempSting += item + "\n";
-        }
+            if (item == ' ')
+            {
+                tempSting += "<size=50%> </size>\n";
+            }
+            else
+            {
 
+            tempSting += item + "\n";
+            }
+        }
+        //tempSting.Replace(" \n", "<size=50%> </size>\n");
 
         return tempSting;
     }
@@ -180,7 +190,15 @@ public class GameController : MonoBehaviour
 
         foreach (var item in currentString)
         {
-            tempSting += item + "\n";
+            if (item == ' ')
+            {
+                tempSting += "<size=50%> </size>\n";
+            }
+            else
+            {
+
+                tempSting += item + "\n";
+            }
         }
         tempSting += $"<color=#FFFE00>{endTime - (int)lapseTimer}</color>\n초";
         return tempSting;
