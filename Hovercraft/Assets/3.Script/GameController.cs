@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     public int index =0;
 
     [Header("SettingValue")]
-    float endTime = 90f;
+    float endTime = 60;
     float restTime = 30f;
     float changeTime = 5f;
     int returnNum = 7;
@@ -94,28 +94,31 @@ public class GameController : MonoBehaviour
         lapseTimer += Time.deltaTime;
         if (mode == Mode.play)
         {
-            //if (lapseTimer >= 10)
-            //{
-                //data.playText_F[0] = $"체험중입니다<color=#FFFE00>{endTime - (int)lapseTimer}</color>초";
-                frontText.text = ConvertPlayText(data.playText_F);
-                frontText1.text = ConvertPlayText(data.playText_F);
-                backText.text = ConvertPlayText(data.playText_B);
-                backText1.text = ConvertPlayText(data.playText_B);
-                //UpdateText();
-            //}
+            frontText.text = ConvertPlayText(data.playText_F[0], endTime);
+            frontText1.text = ConvertPlayText(data.playText_F[0], endTime);
+            backText.text = ConvertPlayText(data.playText_B[0], endTime);
+            backText1.text = ConvertPlayText(data.playText_B[0], endTime);
+
             if (lapseTimer >= endTime)
             {
-                Debug.Log($"체험시간종료");
                 SetMode(Mode.End);
                 lapseTimer = 0;
+            Debug.Log("체험시간종료");
             }
-
         }
-        if (mode == Mode.End && lapseTimer >= restTime)
+        if (mode == Mode.End )
         {
-            Debug.Log($"쉬는시간종료");
-            SetMode(Mode.Ready);
-            lapseTimer = 0;
+            frontText.text = ConvertPlayText(data.endText_F[0], restTime);
+            frontText1.text = ConvertPlayText(data.endText_F[1], restTime);
+            backText.text = ConvertPlayText(data.endText_B[0], restTime);
+            backText1.text = ConvertPlayText(data.endText_B[1], restTime);
+
+            if (lapseTimer >= restTime)
+            {
+                SetMode(Mode.Ready);
+                lapseTimer = 0;
+            Debug.Log("휴식시간종료");
+            }
 
         }
         //텍스트 2가지 번갈아가면서
@@ -135,7 +138,7 @@ public class GameController : MonoBehaviour
                 backText.text = ConvertToVerticalText(data.readyText_B[0]);
                 backText1.text = ConvertToVerticalText(data.readyText_B[0]);
                 frontText.text = ConvertToVerticalText(data.readyText_F[0]);
-                frontText1.text = ConvertToVerticalText(data.readyText_F[0]);
+                frontText1.text = ConvertToVerticalText(data.readyText_F[1]);
                 break;
             case Mode.Wait:
                 backText.text = ConvertToVerticalText(data.waitText_B[0]);
@@ -181,14 +184,14 @@ public class GameController : MonoBehaviour
 
         return tempSting;
     }
-    private string ConvertPlayText(string[] texts )
+    private string ConvertPlayText(string text  ,float time)
     {
         string tempSting = "";
 
 
-        string currentString = texts[0];
+        //string currentString = texts[0];
 
-        foreach (var item in currentString)
+        foreach (var item in text)
         {
             if (item == ' ')
             {
@@ -200,7 +203,7 @@ public class GameController : MonoBehaviour
                 tempSting += item + "\n";
             }
         }
-        tempSting += $"<color=#FFFE00>{endTime - (int)lapseTimer}</color>\n초";
+        tempSting += $"<color=#FFFE00>{time - (int)lapseTimer}</color>\n초";
         return tempSting;
     }
     private void SetColor()

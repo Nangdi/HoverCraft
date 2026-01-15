@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1563,10 +1563,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Canvas(back) '
       objectReference: {fileID: 0}
+    - target: {fileID: 38427542285400409, guid: c67e9eda986b4ab4b8daa891288401a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 154782151030620042, guid: c67e9eda986b4ab4b8daa891288401a3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 102
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 3472833345702646501, guid: c67e9eda986b4ab4b8daa891288401a3,
         type: 3}
@@ -1596,7 +1601,7 @@ PrefabInstance:
     - target: {fileID: 4488087146159721049, guid: c67e9eda986b4ab4b8daa891288401a3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 102
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 4689510379227442337, guid: c67e9eda986b4ab4b8daa891288401a3,
         type: 3}
@@ -1824,7 +1829,7 @@ PrefabInstance:
     - target: {fileID: 2017014022477488970, guid: f2b0f8a2712ed1941b4944541a2d7c1f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 102
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 2737431070439470721, guid: f2b0f8a2712ed1941b4944541a2d7c1f,
         type: 3}
@@ -1840,6 +1845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas(front)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575423625131855485, guid: f2b0f8a2712ed1941b4944541a2d7c1f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7846281383221946505, guid: f2b0f8a2712ed1941b4944541a2d7c1f,
         type: 3}
@@ -1869,7 +1879,7 @@ PrefabInstance:
     - target: {fileID: 8438894899594533626, guid: f2b0f8a2712ed1941b4944541a2d7c1f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 102
+      value: 190
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
